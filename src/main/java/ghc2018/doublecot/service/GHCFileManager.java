@@ -1,6 +1,8 @@
 package ghc2018.doublecot.service;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,12 +25,16 @@ public class GHCFileManager {
 		LOG.traceEntry();
 		Pizza pizza = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(filename));
+			FileReader fileReader = new FileReader(filename);
+			BufferedReader br = new BufferedReader(fileReader);
 			String line;
 			while ((line = br.readLine()) != null) {
 				LOG.debug(line);
 			}
 			br.close();
+
+		} catch (FileNotFoundException fnfe) {
+			LOG.debug("not found : " + new File(filename).getAbsolutePath());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
