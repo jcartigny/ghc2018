@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>doublecot.ghc</groupId>
+	<artifactId>ghc2018</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Google HashCode 2018</name>
+	<description>Google HashCode 2018</description>
+
+	<properties>
+		<junit.version>4.12</junit.version>
+		<log4j.version>2.10.0</log4j.version>
+	</properties>
+
+	<dependencies>
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- log4j -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>fast</id>
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+				<maven.javadoc.skip>true</maven.javadoc.skip>
+			</properties>
+		</profile>
+
+
+	</profiles>
+
+</project>
