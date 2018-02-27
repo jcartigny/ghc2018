@@ -3,6 +3,7 @@ package ghc2018.doublecot.service;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +22,7 @@ public class GHCFileManager {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pizza deserialzeAddress(String filename) {
+	public Pizza deserialize(String filename) {
 		LOG.traceEntry();
 		Pizza pizza = null;
 		try {
@@ -39,8 +40,21 @@ public class GHCFileManager {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		LOG.traceExit(pizza);
+		LOG.traceExit();
 		return pizza;
+	}
+
+	public void serialize(Pizza pPizza, String pFilename) {
+		LOG.traceEntry();
+
+		try {
+			FileOutputStream fileOutputStream = new FileOutputStream(new File(pFilename));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		LOG.traceExit();
 	}
 
 }

@@ -14,7 +14,8 @@ public class Main {
 
 		GHCFileManager fileManager = new GHCFileManager();
 
-		fileManager.deserialzeAddress("src/main/resources/small.in");
+		fileManager.deserialize("src/main/resources/small.in");
+		fileManager.serialize(null, "src/main/resources/small.out");
 
 		LOG.traceExit();
 	}
