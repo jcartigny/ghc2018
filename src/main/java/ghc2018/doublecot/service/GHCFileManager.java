@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,8 +50,20 @@ public class GHCFileManager {
 		LOG.traceEntry();
 
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream(new File(pFilename));
+			File file = new File(pFilename);
+
+			if (file.exists()) {
+				file.renameTo(new File(file.getPath() + ".bkp." + new Date().getTime()));
+			}
+			FileOutputStream fileOutputStream = new FileOutputStream(file);
+			fileOutputStream.write("doublecot\n".getBytes());
+			fileOutputStream.write(new Date().toString().getBytes());
+			fileOutputStream.write("\n".getBytes());
+			fileOutputStream.close();
 		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
