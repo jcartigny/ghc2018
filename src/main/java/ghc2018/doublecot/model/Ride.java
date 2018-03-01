@@ -2,6 +2,7 @@ package ghc2018.doublecot.model;
 
 public class Ride {
 
+	int index;
 	int xFrom;
 	int yFrom;
 	int xTo;
@@ -100,6 +101,21 @@ public class Ride {
 	}
 
 	/**
+	 * @return the index
+	 */
+	public int getIndex() {
+		return this.index;
+	}
+
+	/**
+	 * @param pIndex
+	 *            the index to set
+	 */
+	public void setIndex(int pIndex) {
+		this.index = pIndex;
+	}
+
+	/**
 	 * @param pDistance
 	 *            the distance to set
 	 */
@@ -115,8 +131,9 @@ public class Ride {
 		this.latesFinish = pLatesFinish;
 	}
 
-	public Ride(int pXFrom, int pYFrom, int pXTo, int pYTo, int pEarlyestStart, int pLatesFinish) {
+	public Ride(int pIndex, int pXFrom, int pYFrom, int pXTo, int pYTo, int pEarlyestStart, int pLatesFinish) {
 		super();
+		this.index = pIndex;
 		this.xFrom = pXFrom;
 		this.yFrom = pYFrom;
 		this.xTo = pXTo;

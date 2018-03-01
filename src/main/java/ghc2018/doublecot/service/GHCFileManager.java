@@ -51,12 +51,15 @@ public class GHCFileManager {
 
 			// lignesuivantes : ex : ride from [0, 0] to [1, 3], earliest start
 			// 2, latest finish 9
+
+			int i = 0;
 			while ((line = br.readLine()) != null) {
 				String[] splitedRideValues = line.split(" ");
-				Ride ride = new Ride(Integer.parseInt(splitedRideValues[0]), Integer.parseInt(splitedRideValues[1]),
+				Ride ride = new Ride(i, Integer.parseInt(splitedRideValues[0]), Integer.parseInt(splitedRideValues[1]),
 						Integer.parseInt(splitedRideValues[2]), Integer.parseInt(splitedRideValues[3]),
 						Integer.parseInt(splitedRideValues[4]), Integer.parseInt(splitedRideValues[5]));
 				result.getRides().add(ride);
+				i++;
 			}
 
 			br.close();
