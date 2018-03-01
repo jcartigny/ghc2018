@@ -3,7 +3,10 @@ package ghc2018.doublecot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import ghc2018.doublecot.model.Grid;
+import ghc2018.doublecot.model.Vehicule;
 import ghc2018.doublecot.service.GHCFileManager;
+import ghc2018.doublecot.service.PoolManager;
 
 public class Main {
 
@@ -14,8 +17,17 @@ public class Main {
 
 		GHCFileManager fileManager = new GHCFileManager();
 
-		fileManager.deserialize("src/main/resources/small.in");
-		fileManager.serialize(null, "out/small.out");
+		Grid entry = fileManager.deserialize("src/main/resources/city/a_example.in");
+
+		PoolManager poolManager = new PoolManager(entry);
+
+		Vehicule[] vehicules = poolManager.algo();
+
+		for (Vehicule vehicule : vehicules) {
+			LOG.debug(vehicule);
+		}
+
+		fileManager.serialize(vehicules, "out/a_example.out");
 
 		LOG.traceExit();
 	}
