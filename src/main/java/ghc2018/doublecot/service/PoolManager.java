@@ -42,10 +42,11 @@ public class PoolManager {
 
       // test if vehicule is available or not
       for (Vehicule vehicule : pool) {
+        vehicule.stepForward();
         if (vehicule.isAvailable() && !remainingRides.isEmpty()) {
-          vehicule.setNewRide(getBestRideForVehicule(vehicule, step));
-        } else {
-
+          Ride newRide = getBestRideForVehicule(vehicule, step);
+          vehicule.setNewRide(newRide);
+          remainingRides.remove(newRide);
         }
       }
     }
