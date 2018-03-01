@@ -154,9 +154,9 @@ public class Ride {
 	 */
 	@Override
 	public String toString() {
-		return "Ride [xFrom=" + this.xFrom + ", yFrom=" + this.yFrom + ", xTo=" + this.xTo + ", yTo=" + this.yTo
-				+ ", earlyestStart=" + this.earlyestStart + ", latesFinish=" + this.latesFinish + ", distance="
-				+ this.distance + "]";
+		return "Ride [index=" + this.index + ", xFrom=" + this.xFrom + ", yFrom=" + this.yFrom + ", xTo=" + this.xTo
+				+ ", yTo=" + this.yTo + ", earlyestStart=" + this.earlyestStart + ", latesFinish=" + this.latesFinish
+				+ ", distance=" + this.distance + "]";
 	}
 
 }

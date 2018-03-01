@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class Vehicule {
 
-  boolean available;
+	boolean available;
 
-  LinkedList<Ride> completedRides;
+	LinkedList<Ride> completedRides;
 	int x;
 	int y;
 	Ride currentRide;
@@ -37,7 +37,8 @@ public class Vehicule {
 	/**
 	 * @return the completedRides
 	 */
-  public LinkedList<Ride> getCompletedRides() {
+
+	public LinkedList<Ride> getCompletedRides() {
 		return this.completedRides;
 	}
 
@@ -45,7 +46,9 @@ public class Vehicule {
 	 * @param pCompletedRides
 	 *            the completedRides to set
 	 */
-  public void setCompletedRides(LinkedList<Ride> pCompletedRides) {
+
+	public void setCompletedRides(LinkedList<Ride> pCompletedRides) {
+
 		this.completedRides = pCompletedRides;
 	}
 
@@ -109,7 +112,6 @@ public class Vehicule {
 		this.stepToCompleteRide = pStepToCompleteRide;
 	}
 
-
 	public void setNewRide(Ride pRide) {
 		this.completedRides.add(pRide);
 		this.currentRide = pRide;
@@ -126,6 +128,16 @@ public class Vehicule {
 			this.currentRide = null;
 
 		}
+	}
+
+	public String serialize() {
+		String result = "" + completedRides.size();
+
+		for (Ride ride : completedRides) {
+			result += " " + ride.getIndex();
+		}
+
+		return result;
 	}
 
 }
