@@ -1,14 +1,21 @@
 package ghc2018.doublecot.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Vehicule {
+
 	boolean available;
-	ArrayList<Ride> completedRides;
+
+	LinkedList<Ride> completedRides;
 	int x;
 	int y;
 	Ride currentRide;
 	int stepToCompleteRide;
+
+	public Vehicule() {
+		this.available = true;
+		this.completedRides = new LinkedList<Ride>();
+	}
 
 	/**
 	 * @return the available
@@ -28,7 +35,7 @@ public class Vehicule {
 	/**
 	 * @return the completedRides
 	 */
-	public ArrayList<Ride> getCompletedRides() {
+	public LinkedList<Ride> getCompletedRides() {
 		return this.completedRides;
 	}
 
@@ -36,7 +43,7 @@ public class Vehicule {
 	 * @param pCompletedRides
 	 *            the completedRides to set
 	 */
-	public void setCompletedRides(ArrayList<Ride> pCompletedRides) {
+	public void setCompletedRides(LinkedList<Ride> pCompletedRides) {
 		this.completedRides = pCompletedRides;
 	}
 
@@ -100,10 +107,6 @@ public class Vehicule {
 		this.stepToCompleteRide = pStepToCompleteRide;
 	}
 
-	public Vehicule() {
-
-	}
-
 	public void setNewRide(Ride pRide) {
 		this.completedRides.add(pRide);
 		this.currentRide = pRide;
@@ -117,6 +120,16 @@ public class Vehicule {
 			this.available = true;
 			this.currentRide = null;
 		}
+	}
+
+	public String serialize() {
+		String result = "" + completedRides.size();
+
+		for (Ride ride : completedRides) {
+			result += " " + ride.getIndex();
+		}
+
+		return result;
 	}
 
 }
