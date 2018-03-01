@@ -22,9 +22,12 @@ public class PoolManager {
 
   public Vehicule[] algo() {
     Vehicule[] pool = new Vehicule[input.getVehicles()];
+    for (int i = 0; i < pool.length; i++) {
+      pool[i] = new Vehicule();
+    }
     
     // for each step
-    for (int i = 0; i < input.getSteps(); i++) {
+    for (int step = 0; step < input.getSteps(); step++) {
       if (remainingRides.isEmpty()) {
         // no more ride to affect
         break;
@@ -33,7 +36,7 @@ public class PoolManager {
       // test if vehicule is available or not
       for (Vehicule vehicule : pool) {
         if (vehicule.isAvailable() && !remainingRides.isEmpty()) {
-          vehicule.setNewRide(getBestRideForVehicule(vehicule));
+          vehicule.setNewRide(getBestRideForVehicule(vehicule, step));
         } else {
 
         }
@@ -43,13 +46,20 @@ public class PoolManager {
     return pool;
   }
 
-  private Ride getBestRideForVehicule(Vehicule vehicule) {
-    Ride minRideForVehicule;
+  private Ride getBestRideForVehicule(Vehicule vehicule, int step) {
+    Ride bestRideForVehicule = remainingRides.get(0);
+    int timeToWait = 999999999;
     for (Ride ride : remainingRides) {
-
+      int distToStart = distance(vehicule.getX(), ride.getxFrom(), vehicule.getY(), ride.getyFrom());
+      int newtimeToWait = ride.getEarlyestStart() - (step + distToStart);
+      
+      int timeArrival = step + distToStart + ride.getDistance();
+      if (timeArrival <= ride.getLatesFinish() && newtimeToWait < timeToWait) {
+        bestRideForVehicule = ride;
+      }
     }
 
-    return null;
+    return bestRideForVehicule;
   }
 
   public static int distance(int ordFrom, int ordTo, int absFrom, int absTo) {
