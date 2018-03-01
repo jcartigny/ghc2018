@@ -15,6 +15,8 @@ public class Vehicule {
   public Vehicule() {
     this.available = true;
     this.completedRides = new LinkedList<Ride>();
+    this.x = 0;
+    this.y = 0;
   }
 
 	/**
@@ -119,7 +121,10 @@ public class Vehicule {
 		this.stepToCompleteRide--;
 		if (this.stepToCompleteRide == 0) {
 			this.available = true;
+      this.x = this.currentRide.xTo;
+      this.y = this.currentRide.yTo;
 			this.currentRide = null;
+
 		}
 	}
 
