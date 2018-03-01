@@ -140,4 +140,12 @@ public class Vehicule {
 		return result;
 	}
 
+	public long getScore() {
+		long result = 0;
+		for (Ride ride : completedRides) {
+			result += ride.getDistance();
+		}
+		return result;
+	}
+
 }
