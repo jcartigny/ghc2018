@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,7 +74,7 @@ public class GHCFileManager {
 		return result;
 	}
 
-	public void serialize(List<Vehicule> pVehicules, String pFilename) {
+	public void serialize(Vehicule[] pVehicules, String pFilename) {
 		LOG.traceEntry();
 
 		try {
