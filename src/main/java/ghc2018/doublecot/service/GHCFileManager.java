@@ -8,13 +8,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import ghc2018.doublecot.model.Grid;
-import ghc2018.doublecot.model.Pizza;
 import ghc2018.doublecot.model.Ride;
+import ghc2018.doublecot.model.Vehicule;
 
 public class GHCFileManager {
 	private static final Logger LOG = LogManager.getLogger(GHCFileManager.class);
@@ -74,7 +75,7 @@ public class GHCFileManager {
 		return result;
 	}
 
-	public void serialize(Pizza pPizza, String pFilename) {
+	public void serialize(List<Vehicule> pVehicules, String pFilename) {
 		LOG.traceEntry();
 
 		try {
@@ -84,9 +85,12 @@ public class GHCFileManager {
 				file.renameTo(new File(file.getPath() + ".bkp." + new Date().getTime()));
 			}
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
-			fileOutputStream.write("doublecot\n".getBytes());
-			fileOutputStream.write(new Date().toString().getBytes());
-			fileOutputStream.write("\n".getBytes());
+
+			for (Vehicule vehicule : pVehicules) {
+				fileOutputStream.write(vehicule.serialize().getBytes());
+				fileOutputStream.write("\n".getBytes());
+			}
+
 			fileOutputStream.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

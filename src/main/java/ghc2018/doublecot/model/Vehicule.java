@@ -35,6 +35,7 @@ public class Vehicule {
 	/**
 	 * @return the completedRides
 	 */
+
 	public LinkedList<Ride> getCompletedRides() {
 		return this.completedRides;
 	}
@@ -43,7 +44,9 @@ public class Vehicule {
 	 * @param pCompletedRides
 	 *            the completedRides to set
 	 */
+
 	public void setCompletedRides(LinkedList<Ride> pCompletedRides) {
+
 		this.completedRides = pCompletedRides;
 	}
 
